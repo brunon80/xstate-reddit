@@ -6,7 +6,7 @@ import Subreddit from './Subreddit'
 const subreddits = ['Choose a item','frontend', 'reactjs', 'vuejs'];
 
 const App = () => {
-    const [current, send] = useMachine(redditMachine);
+    const [current, send] = useMachine(redditMachine, { devTools: true });
     const { subreddit } = current.context;
 
     function onSelect(e) {
