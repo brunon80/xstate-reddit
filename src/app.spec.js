@@ -7,11 +7,10 @@ describe('reddit machine (live)', () => {
     it('should load posts of a selected subreddit', done => {
         const redditService = interpret(redditMachine)
             .onTransition(state => {
-                // when the state finally reaches 'selected.loaded',
+                // when the state finally reaches 'selected' after fetch data,
                 // the test has succeeded.
-
-                if (state.matches({ selected: 'loaded' })) {
-                    assert.isNotEmpty(state.context.posts);
+                if (state.matches('selected')) {
+                    assert.isNotEmpty(state.context.subreddits);
 
                     done();
                 }
